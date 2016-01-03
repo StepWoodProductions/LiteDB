@@ -4,6 +4,15 @@ namespace LiteDB
 {
     internal static class StreamExtensions
     {
+        public static void CopyTo(this Stream stream, Stream destination)
+        {
+            int b;
+            while (-1 != (b = stream.ReadByte()))
+            {
+                destination.WriteByte((byte)b);
+            }
+        }
+
         public static byte ReadByte(this Stream stream, long position)
         {
             var buffer = new byte[1];

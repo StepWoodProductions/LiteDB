@@ -41,7 +41,7 @@ namespace LiteDB
         /// </summary>
         public int Update(IEnumerable<T> documents)
         {
-            if (documents == null) throw new ArgumentNullException("document");
+            if (documents == null) throw new ArgumentNullException("documents");
 
             return _engine.Update(_name, documents.Select(x => _mapper.ToDocument(x)));
         }

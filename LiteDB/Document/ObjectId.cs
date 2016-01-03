@@ -97,7 +97,7 @@ namespace LiteDB
         public ObjectId(byte[] bytes)
         {
             if (bytes == null) throw new ArgumentNullException("bytes");
-            if (bytes.Length != 12) throw new ArgumentException("bytes", "Byte array must be 12 bytes long");
+            if (bytes.Length != 12) throw new ArgumentException("Byte array must be 12 bytes long", "bytes");
 
             this.Timestamp = (bytes[0] << 24) + (bytes[1] << 16) + (bytes[2] << 8) + bytes[3];
             this.Machine = (bytes[4] << 16) + (bytes[5] << 8) + bytes[6];

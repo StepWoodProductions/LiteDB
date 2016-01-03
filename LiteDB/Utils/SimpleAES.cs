@@ -19,7 +19,7 @@ namespace LiteDB
             _rijndael = Rijndael.Create();
             _rijndael.Padding = PaddingMode.Zeros;
 
-            using (var pdb = new Rfc2898DeriveBytes(password, SALT))
+            var pdb = new Rfc2898DeriveBytes(password, SALT);
             {
                 _rijndael.Key = pdb.GetBytes(32);
                 _rijndael.IV = pdb.GetBytes(16);
@@ -75,7 +75,8 @@ namespace LiteDB
         {
             if (_rijndael != null)
             {
-                _rijndael.Dispose();
+                //_rijndael.Dispose();
+                _rijndael = null;
             }
         }
     }
